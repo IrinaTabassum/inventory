@@ -1,0 +1,68 @@
+package userpb
+
+type UserService interface {
+	Register(RegisterRequest) RegisterResponse
+	Login(LoginRequest) LoginResponse
+	Userlist(ListUserRequest) ListUserResponse
+	UpdateUser(UpdateUserRequest) UpdateUserResponse
+	DelateUser(DelateUserRequest) DelateUserResponse
+	GetUser(GetUserRequest) GetUserResponse
+}
+
+type User struct {
+	ID        int    `pb:"1"`
+	FirstName string `pb:"2"`
+	LastName  string `pb:"3"`
+	Username  string `pb:"4"`
+	Email     string `pb:"5"`
+	IsActive  bool   `pb:"6"`
+}
+
+type RegisterRequest struct {
+	FirstName string `pb:"1"`
+	LastName  string `pb:"2"`
+	Username  string `pb:"3"`
+	Email     string `pb:"4"`
+	Password  string `pb:"5"`
+}
+
+type RegisterResponse struct {
+	User User `pb:"1"`
+}
+
+type LoginRequest struct {
+	Username string `pb:"1"`
+	Password string `pb:"2"`
+}
+
+type LoginResponse struct {
+	User User `pb:"1"`
+}
+type ListUserRequest struct {
+	SearchTerm string `pb:"1"`
+	Offset     int	  `pb:"2"`
+	Limit      int	  `pb:"3"`
+}
+type ListUserResponse struct {
+    Users []User `pb:"1"`
+}
+type UpdateUserRequest struct {
+	ID        int    `pb:"1"`
+	FirstName string `pb:"2"`
+	LastName  string `pb:"3"`
+	IsActive  bool   `pb:"4"`
+}
+type UpdateUserResponse struct {
+	User User `pb:"1"`
+}
+type DelateUserRequest struct {
+	ID     int  `pb:"1"`
+}
+type DelateUserResponse struct {}
+
+type GetUserRequest struct {
+	ID     int  `pb:"1"`
+}
+type GetUserResponse struct {
+	User User `pb:"1"`
+}

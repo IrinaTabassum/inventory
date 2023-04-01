@@ -1,0 +1,64 @@
+package sellpb
+
+
+
+type SellService interface {
+	CreateSell(CreateSellRequest) CreateSellResponse
+	ListSell(ListSellRequest) ListSellResponse
+	GetSell(GetSellRequest) GetSellResponse
+}
+
+type Sell struct {
+	ID           int           `pb:"1"`
+	CustomerId   int           `pb:"2"`
+	CustomerName string        `pb:"3"`
+	SoldProducts []SoldProduct `pb:"4"`
+	TotalPrice   float32       `pb:"5"`
+}
+type SoldProduct struct{
+	ProductId      int     `pb:"1"`
+	ProductName    string  `pb:"2"`
+	UnitPrice      float32 `pb:"3"`
+	Quantity       int     `pb:"4"`
+	TotalUnitPrice float32 `pb:"5"`
+}
+
+type CreateSellRequest struct {
+	CustomerId   int              `pb:"1"`
+	ProductQuantity map[int]int   `pb:"2"`
+}
+
+type CreateSellResponse struct {
+	Sell Sell `pb:"1"`
+}
+
+type ListSellRequest struct {
+	SearchTerm string `pb:"1"`
+	Offset     int	  `pb:"2"`
+	Limit      int	  `pb:"3"`
+}
+type ListSellResponse struct {
+	Sells []Sell `pb:"1"`
+}
+type GetSellRequest struct {
+	ID int  `pb:"1"`
+}
+type GetSellResponse struct {
+	Sell Sell  `pb:"1"`
+}
+type UpdateSellRequest struct {
+	Sell Sell  `pb:"1"`
+}
+type UpdateSellResponse struct {
+	Sell Sell  `pb:"1"`
+}
+
+
+
+
+
+
+
+
+
+

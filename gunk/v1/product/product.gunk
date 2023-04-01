@@ -1,0 +1,64 @@
+package productpb
+
+
+type ProductService interface {
+	CreateProduct(CreateProductRequest) CreateProductResponse
+	ListProduct(ListProductRequest) ListProductResponse
+	GetProduct(GetProductRequest) GetProductResponse
+	UpdateProduct(UpdateProductRequest) UpdateProductResponse
+	DeleteProduct(DeleteProductRequest) DeleteProductResponse
+
+}
+
+type Product struct {
+	ID          int     `pb:"1"`
+    CategoryId  int     `pb:"2"`
+	Name        string  `pb:"3"`
+	Description string  `pb:"4"`
+    Price       float32 `pb:"5"`
+}
+
+type CreateProductRequest struct {
+	CategoryId  int     `pb:"1"`
+	Name        string  `pb:"2"`
+	Description string  `pb:"3"`
+    Price       float32 `pb:"4"`
+}
+
+type CreateProductResponse struct {
+	Product Product `pb:"1"`
+}
+
+type ListProductRequest struct {
+	SearchTerm string `pb:"1"`
+	Offset     int	  `pb:"2"`
+	Limit      int	  `pb:"3"`
+}
+type ListProductResponse struct {
+	Products []Product `pb:"1"`
+}
+type GetProductRequest struct {
+	ID int  `pb:"1"`
+}
+type GetProductResponse struct {
+	Product Product  `pb:"1"`
+}
+type UpdateProductRequest struct {
+	Product Product  `pb:"1"`
+}
+type UpdateProductResponse struct {
+	Product Product  `pb:"1"`
+}
+type DeleteProductRequest struct {
+	ID     int  `pb:"1"`
+}
+type DeleteProductResponse struct {}
+
+
+
+
+
+
+
+
+

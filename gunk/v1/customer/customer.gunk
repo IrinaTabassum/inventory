@@ -1,0 +1,58 @@
+package customerpb
+
+
+type CustomerService interface {
+	CreateCustomer(CreateCustomerRequest) CreateCustomerResponse
+	ListCustomer(ListCustomerRequest) ListCustomerResponse
+	GetCustomer(GetCustomerRequest) GetCustomerResponse
+	UpdateCustomer(UpdateCustomerRequest) UpdateCustomerResponse
+	DeleteCustomer(DeleteCustomerRequest) DeleteCustomerResponse
+
+}
+
+type Customer struct {
+	ID   int    `pb:"1"`
+	Name string `pb:"2"`
+}
+
+type CreateCustomerRequest struct {
+	Name string `pb:"1"`
+}
+
+type CreateCustomerResponse struct {
+	Customer Customer `pb:"1"`
+}
+
+type ListCustomerRequest struct {
+	SearchTerm string `pb:"1"`
+	Offset     int	  `pb:"2"`
+	Limit      int	  `pb:"3"`
+}
+type ListCustomerResponse struct {
+	Customers []Customer `pb:"1"`
+}
+type GetCustomerRequest struct {
+	ID int  `pb:"1"`
+}
+type GetCustomerResponse struct {
+	Customer Customer  `pb:"1"`
+}
+type UpdateCustomerRequest struct {
+	Customer Customer  `pb:"1"`
+}
+type UpdateCustomerResponse struct {
+	Customer Customer  `pb:"1"`
+}
+type DeleteCustomerRequest struct {
+	ID     int  `pb:"1"`
+}
+type DeleteCustomerResponse struct {}
+
+
+
+
+
+
+
+
+

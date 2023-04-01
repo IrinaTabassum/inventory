@@ -1,0 +1,28 @@
+package stockpb
+
+type StockService interface {
+	ListStock(ListStockRequest) ListStockResponse
+	GetStock(GetStockRequest) GetStockResponse
+}
+
+type Stock struct {
+	ID          int     `pb:"1"`
+	ProductId   int     `pb:"2"`
+	ProductNmae string  `pb:"3"`
+	Quantity    int     `pb:"4"`
+}
+
+type ListStockRequest struct {
+	SearchTerm string `pb:"1"`
+	Offset     int    `pb:"2"`
+	Limit      int    `pb:"3"`
+}
+type ListStockResponse struct {
+	Stocks []Stock `pb:"1"`
+}
+type GetStockRequest struct {
+	ID int `pb:"1"`
+}
+type GetStockResponse struct {
+	Stock Stock `pb:"1"`
+}

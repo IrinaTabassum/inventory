@@ -1,0 +1,24 @@
+package salereportpb
+
+
+
+type SalesService interface {
+	ListSalesReport(ListSalesReportRequest) ListSalesReportResponse
+}
+
+type SalesReport struct {
+	ProductId        int     `pb:"1"`
+	ProductName      string  `pb:"2"`
+	PurchaseQuantity int     `pb:"3"`
+	SellQuantity     int     `pb:"4"`
+	StockQuantity    int     `pb:"5"`
+}
+
+type ListSalesReportRequest struct {
+	SearchTerm string `pb:"1"`
+	Offset     int	  `pb:"2"`
+	Limit      int	  `pb:"3"`
+}
+type ListSalesReportResponse struct {
+	SalesReports []SalesReport `pb:"1"`
+}

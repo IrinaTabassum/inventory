@@ -1,0 +1,58 @@
+package supplierpb
+
+
+type SupplierService interface {
+	CreateSupplier(CreateSupplierRequest) CreateSupplierResponse
+	ListSupplier(ListSupplierRequest) ListSupplierResponse
+	GetSupplier(GetSupplierRequest) GetSupplierResponse
+	UpdateSupplie(UpdateSupplierRequest) UpdateSupplierResponse
+	DeleteSupplier(DeleteSupplierRequest) DeleteSupplierResponse
+
+}
+
+type Supplier struct {
+	ID   int    `pb:"1"`
+	Name string `pb:"2"`
+}
+
+type CreateSupplierRequest struct {
+	Name string `pb:"1"`
+}
+
+type CreateSupplierResponse struct {
+	Supplier Supplier `pb:"1"`
+}
+
+type ListSupplierRequest struct {
+	SearchTerm string `pb:"1"`
+	Offset     int	  `pb:"2"`
+	Limit      int	  `pb:"3"`
+}
+type ListSupplierResponse struct {
+	Suppliers []Supplier `pb:"1"`
+}
+type GetSupplierRequest struct {
+	ID int  `pb:"1"`
+}
+type GetSupplierResponse struct {
+	Supplier Supplier  `pb:"1"`
+}
+type UpdateSupplierRequest struct {
+	Supplier Supplier  `pb:"1"`
+}
+type UpdateSupplierResponse struct {
+	Supplier Supplier  `pb:"1"`
+}
+type DeleteSupplierRequest struct {
+	ID     int  `pb:"1"`
+}
+type DeleteSupplierResponse struct {}
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,62 @@
+package purchasepb
+
+
+type PurchaseService interface {
+	CreatePurchase(CreatePurchaseRequest) CreatePurchaseResponse
+	ListPurchase(ListPurchaseRequest) ListPurchaseResponse
+	GetPurchase(GetPurchaseRequest) GetPurchaseResponse
+	UpdatePurchase(UpdatePurchaseRequest) UpdatePurchaseResponse
+}
+
+type Purchase struct {
+	ID         int     `pb:"1"`
+	SupplierId int     `pb:"2"`
+	ProductId  int     `pb:"3"`
+	Quantity   int     `pb:"4"`
+	UnitPrice  float32 `pb:"5"`
+	TotalPrice float32 `pb:"6"`
+}
+
+type CreatePurchaseRequest struct {
+	SupplierId  int     `pb:"1"`
+	ProductId   int     `pb:"2"`
+	Quantity    int     `pb:"3"`
+}
+
+type CreatePurchaseResponse struct {
+	Purchase Purchase `pb:"1"`
+}
+
+type ListPurchaseRequest struct {
+	SearchTerm string `pb:"1"`
+	Offset     int	  `pb:"2"`
+	Limit      int	  `pb:"3"`
+}
+type ListPurchaseResponse struct {
+	Purchases []Purchase `pb:"1"`
+}
+type GetPurchaseRequest struct {
+	ID int  `pb:"1"`
+}
+type GetPurchaseResponse struct {
+	Purchase Purchase  `pb:"1"`
+}
+type UpdatePurchaseRequest struct {
+	ID         int     `pb:"1"`
+	SupplierId int     `pb:"2"`
+	ProductId  int     `pb:"3"`
+	Quantity   int     `pb:"4"`
+}
+type UpdatePurchaseResponse struct {
+	Purchase Purchase  `pb:"1"`
+}
+
+
+
+
+
+
+
+
+
+
